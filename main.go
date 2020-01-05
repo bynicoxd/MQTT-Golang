@@ -26,6 +26,7 @@ func main() {
 	//Define parameters of the connection
 	var br Broker
 	br.host = "test.mosquitto.org"
+	//you can consult the correct port of a type connection on godoc
 	br.port = "1883"
 	// this is only if you have your own broker
 	/*
@@ -92,6 +93,7 @@ func inicialize(br Broker) (mqtt.Client, error) {
 
 func susbcriber(client mqtt.Client, br Broker) {
 	for {
+		//you can replace "#" for br.topic to user a personal topic that you defined
 		client.Subscribe("#", br.QoS, func(client mqtt.Client, msg mqtt.Message) {
 			fmt.Printf(" Listening from topic %s message :%s\n", msg.Topic(), string(msg.Payload()))
 		})
